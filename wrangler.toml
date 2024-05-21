@@ -3,7 +3,16 @@ name = "workers-kv"
 main = "src/index.ts"
 compatibility_date = "2024-05-12"
 compatibility_flags = ["nodejs_compat"]
-
+[env.production]
+kv_namespaces = [
+    { binding = "MY_KV", id = "e8ea770a884149768a7622146f0b86dc" },
+    { binding = "LAST_FETCHED_DATE", id = "d3db9cf25b7b4b38824af472a362d692" }
+]
+[env.preview]
+kv_namespaces = [
+    { binding = "MY_KV", id = "db5b39fe125640d5b4fbf6ba2b15bc61" },
+    { binding = "LAST_FETCHED_DATE", id = "eb57608d194a48b0948222e2092cf250" }
+]
 # Automatically place your workloads in an optimal location to minimize latency.
 # If you are running back-end logic in a Worker, running it closer to your back-end infrastructure
 # rather than the end user may result in better performance.
